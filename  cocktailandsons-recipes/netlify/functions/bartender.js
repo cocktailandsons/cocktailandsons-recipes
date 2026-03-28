@@ -1,19 +1,19 @@
 exports.handler = async (event) => {
-  // Only allow POST
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
-  }
-
-  // CORS headers — update the origin to your Shopify store domain
   const headers = {
-    'Access-Control-Allow-Origin': '*', // Replace * with https://store.cocktailandsons.com in production
+    'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Content-Type': 'application/json',
   };
 
-  // Handle CORS preflight
+  // Handle CORS preflight — must be checked before anything else
   if (event.httpMethod === 'OPTIONS') {
     return { statusCode: 200, headers, body: '' };
+  }
+
+  // Only allow POST
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method Not Allowed' }) };
   }
 
   let ingredients;
