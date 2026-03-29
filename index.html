@@ -7,17 +7,11 @@
 <title>Cocktail & Sons — Recipes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
-  :root {
-    --cream:#faf7f2;--white:#fff;--ink:#1a1510;--ink-mid:#4a3f33;--ink-light:#8a7a6a;
-    --border:#e2d9cc;--border-dark:#c8bfb0;--green:#2d4a35;--tan:#c9a96e;--tan-light:#eedcb8;
-    --red:#8b2e1a;--tiki:#5a3020;--punch:#1a3a5a;--original:#3a2060;
-  }
+  :root{--cream:#faf7f2;--white:#fff;--ink:#1a1510;--ink-mid:#4a3f33;--ink-light:#8a7a6a;--border:#e2d9cc;--border-dark:#c8bfb0;--green:#2d4a35;--tan:#c9a96e;--tan-light:#eedcb8;--red:#8b2e1a;--tiki:#5a3020;--punch:#1a3a5a;--original:#3a2060}
   *{margin:0;padding:0;box-sizing:border-box}
-  .cs-recipes{font-family:'Jost',sans-serif;color:var(--ink)}
-  .app{max-width:1280px;margin:0 auto;padding:0 40px 80px}
-  /* CONTROLS */
+  body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
+  .app{max-width:1280px;margin:0 auto;padding:24px 24px 80px}
   .controls{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
   .controls-row{display:flex;gap:12px;align-items:center;width:100%;flex-wrap:wrap}
   .search-wrap{position:relative;flex:1;min-width:200px}
@@ -40,9 +34,7 @@
   .section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:20px}
   .section-head h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--ink)}
   .section-head .count{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light)}
-  /* GRID */
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:60px}
-  /* CARD */
   .cocktail-card{background:var(--white);padding:22px 20px 18px;cursor:pointer;transition:background .2s;animation:fadeUp .3s ease both;display:flex;flex-direction:column}
   .cocktail-card:hover{background:#fdfaf6}
   .card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
@@ -54,13 +46,12 @@
   .card-tag.punch{color:var(--punch);border-color:rgba(26,58,90,.3);background:rgba(26,58,90,.05)}
   .card-tag.original{color:var(--original);border-color:rgba(58,32,96,.3);background:rgba(58,32,96,.05)}
   .card-name{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:var(--ink);margin-bottom:5px;line-height:1.15}
-  .card-syrup{display:inline-block;font-size:10px;color:var(--tan);font-weight:600;letter-spacing:.06em;margin-bottom:8px;text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.35);transition:color .15s,border-color .15s}
-  .card-syrup:hover{color:#a07830;border-color:rgba(160,120,48,0.6)}
+  .card-syrup{display:inline-block;font-size:10px;color:var(--tan);font-weight:600;letter-spacing:.06em;margin-bottom:8px;text-decoration:none;border-bottom:1px solid rgba(201,169,110,.35);transition:color .15s,border-color .15s}
+  .card-syrup:hover{color:#a07830;border-color:rgba(160,120,48,.6)}
   .card-desc{font-size:12px;color:var(--ink-light);line-height:1.6;flex:1;margin-bottom:14px;font-weight:300}
   .card-footer{border-top:1px solid var(--border);padding-top:10px;display:flex;justify-content:space-between;align-items:center}
   .card-meta{font-size:10px;color:var(--ink-light);display:flex;gap:8px}
   .card-cta{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);font-weight:600}
-  /* MODAL */
   .modal-overlay{position:fixed;inset:0;background:rgba(26,21,16,.72);backdrop-filter:blur(6px);z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .3s}
   .modal-overlay.open{opacity:1;pointer-events:all}
   .modal{background:var(--white);border:1px solid var(--border);max-width:620px;width:100%;max-height:90vh;overflow-y:auto;transform:translateY(14px);transition:transform .3s;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
@@ -107,17 +98,13 @@
   .btn-white:hover{background:rgba(255,255,255,.1);border-color:#fff}
   .empty-state{background:var(--white);padding:60px 20px;text-align:center;color:var(--ink-light);grid-column:1/-1}
   .empty-state .big{font-size:36px;margin-bottom:12px}
-  .spinner{width:14px;height:14px;border:2px solid rgba(45,74,53,.2);border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite;display:inline-block}
-  @keyframes spin{to{transform:rotate(360deg)}}
   @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-  @media(max-width:768px){
-    .app{padding:0 16px 60px}
-    .modal-header{padding:20px 18px 16px}
-    .modal-body{padding:18px 18px 26px}
-    .modal-title{font-size:24px}
-  }
+  @media(max-width:768px){.app{padding:16px 16px 60px}.modal-header{padding:20px 18px 16px}.modal-body{padding:18px 18px 26px}.modal-title{font-size:24px}}
+</style>
+</head>
+<body>
 
-<div id="cs-recipes-app" class="app">
+<div class="app">
   <div class="controls">
     <div class="controls-row">
       <div class="search-wrap">
@@ -146,8 +133,6 @@
   <div class="grid" id="grid"></div>
 </div>
 
-
-
 <div class="modal-overlay" id="modal" onclick="closeModal(event)">
   <div class="modal">
     <div class="modal-header" id="m-header">
@@ -165,7 +150,7 @@
       <ul class="ingredients-list" id="m-ingredients"></ul>
       <p class="modal-section">Method</p>
       <ol class="steps-list" id="m-steps"></ol>
-      <p class="modal-section" id="m-garnish-label">Garnish</p>
+      <p class="modal-section">Garnish</p>
       <div class="garnish-note" id="m-garnish"></div>
       <div id="m-shop"></div>
     </div>
@@ -173,7 +158,6 @@
 </div>
 
 <script>
-const S = 'https://store.cocktailandsons.com';
 const SYRUPS = {
   dem: [S+'/products/spiced-demerara-8oz-bottle','Spiced Demerara'],
   oleo: [S+'/products/oleo-saccharum','Oleo Saccharum'],
@@ -1057,6 +1041,6 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModalDirect();}
 
 renderGrid(COCKTAILS);
 </script>
-
 </body>
 </html>
+
