@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
 <title>Cocktail & Sons — Recipes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
   :root {
     --cream:#faf7f2;--white:#fff;--ink:#1a1510;--ink-mid:#4a3f33;--ink-light:#8a7a6a;
@@ -13,54 +15,8 @@
     --red:#8b2e1a;--tiki:#5a3020;--punch:#1a3a5a;--original:#3a2060;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
-  .announcement{background:var(--green);color:#c4dbc4;text-align:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:10px 16px;font-weight:500}
-  header{background:var(--white);border-bottom:1px solid var(--border);padding:18px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;gap:16px}
-  .logo{display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-decoration:none}
-  .logo-top{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;letter-spacing:.15em;color:var(--tan)}
-  .logo-main{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--ink);letter-spacing:.04em;line-height:1}
-  .logo-sub{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-light);font-weight:500}
-  .header-nav{display:flex;gap:28px;align-items:center}
-  .header-nav a{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;font-weight:500;transition:color .2s}
-  .header-nav a:hover{color:var(--green)}
-  .hero-wrap{background:var(--white);border-bottom:1px solid var(--border)}
-  .hero{max-width:1280px;margin:0 auto;padding:48px 40px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
-  .hero-eyebrow{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--tan);margin-bottom:14px;font-weight:600}
-  .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,58px);font-weight:600;line-height:1.1;color:var(--ink);margin-bottom:16px}
-  .hero-title em{font-style:italic;color:var(--green)}
-  .hero-rule{width:44px;height:2px;background:var(--tan);margin:18px 0}
-  .hero-sub{font-size:14px;color:var(--ink-mid);line-height:1.75;max-width:500px;font-weight:300}
-  .hero-badges{display:flex;gap:20px;flex-wrap:wrap;margin-top:24px}
-  .badge{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-light)}
-  .badge-dot{width:5px;height:5px;border-radius:50%;background:var(--tan);flex-shrink:0}
-  .hero-seal{width:120px;height:120px;border-radius:50%;border:2px solid var(--border-dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:var(--cream);flex-shrink:0}
-  .hero-seal .s1{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--ink-light)}
-  .hero-seal .s2{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--ink)}
-  .hero-seal .s3{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-light)}
+  .cs-recipes{font-family:'Jost',sans-serif;color:var(--ink)}
   .app{max-width:1280px;margin:0 auto;padding:0 40px 80px}
-  /* AI */
-  .ai-section{background:var(--green);border-radius:2px;padding:36px 48px;margin:40px 0;display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start}
-  .ai-eyebrow{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:rgba(196,219,196,.6);margin-bottom:8px;font-weight:600}
-  .ai-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#fff;line-height:1.2;margin-bottom:10px}
-  .ai-title em{font-style:italic;color:#a8c8a8}
-  .ai-desc{font-size:13px;color:rgba(196,219,196,.8);line-height:1.75;font-weight:300}
-  .ai-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(196,219,196,.7);margin-bottom:8px;font-weight:600}
-  .ai-input{width:100%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:2px;padding:13px 16px;color:#fff;font-family:'Jost',sans-serif;font-size:14px;outline:none;transition:border-color .2s}
-  .ai-input::placeholder{color:rgba(255,255,255,.35)}
-  .ai-input:focus{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.14)}
-  .btn-primary{background:var(--white);color:var(--green);border:none;padding:13px 24px;border-radius:2px;margin-top:10px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px}
-  .btn-primary:hover{background:var(--cream)}
-  .btn-primary:disabled{opacity:.55;cursor:not-allowed}
-  .ai-result{margin-top:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:2px;padding:20px;display:none;animation:fadeUp .4s ease}
-  .ai-result.visible{display:block}
-  .ai-result h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:#fff;margin-bottom:8px}
-  .ai-result p{font-size:13px;color:rgba(196,219,196,.85);line-height:1.7;margin-bottom:10px;font-weight:300}
-  .ai-result ul{list-style:none;margin-bottom:10px}
-  .ai-result ul li{font-size:13px;color:rgba(196,219,196,.85);padding:5px 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;gap:8px;font-weight:300}
-  .ai-result ul li::before{content:'—';color:var(--tan-light);flex-shrink:0}
-  .ai-result ol{list-style:none;counter-reset:s;margin-bottom:10px}
-  .ai-result ol li{counter-increment:s;font-size:13px;color:rgba(196,219,196,.85);margin-bottom:7px;display:flex;gap:10px;line-height:1.6;font-weight:300}
-  .ai-result ol li::before{content:counter(s);background:rgba(255,255,255,.15);color:#fff;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:1px}
   /* CONTROLS */
   .controls{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
   .controls-row{display:flex;gap:12px;align-items:center;width:100%;flex-wrap:wrap}
@@ -154,79 +110,14 @@
   .spinner{width:14px;height:14px;border:2px solid rgba(45,74,53,.2);border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite;display:inline-block}
   @keyframes spin{to{transform:rotate(360deg)}}
   @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-  .footer{background:var(--white);border-top:1px solid var(--border);padding:18px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--ink-light);flex-wrap:wrap;gap:10px}
-  .footer a{color:var(--green);text-decoration:none}
   @media(max-width:768px){
-    header{padding:14px 20px}
-    .header-nav{display:none}
-    .hero{grid-template-columns:1fr;padding:32px 20px}
-    .hero-seal{display:none}
     .app{padding:0 16px 60px}
-    .ai-section{grid-template-columns:1fr;padding:24px 20px}
-    .footer{padding:14px 20px}
     .modal-header{padding:20px 18px 16px}
     .modal-body{padding:18px 18px 26px}
     .modal-title{font-size:24px}
   }
-</style>
-</head>
-<body>
 
-<div class="announcement">Free shipping over $60 &nbsp;·&nbsp; Use code VEGAS2026 for 20% off sitewide</div>
-
-<header>
-  <a class="logo" href="https://store.cocktailandsons.com">
-    <span class="logo-top">Cocktail &amp;</span>
-    <span class="logo-main">Sons</span>
-    <span class="logo-sub">Complex syrups · Simple drinks</span>
-  </a>
-  <nav class="header-nav">
-    <a href="https://store.cocktailandsons.com/collections/syrups">Bar Syrups</a>
-    <a href="https://store.cocktailandsons.com/collections/mixers">Mixers</a>
-    <a href="https://store.cocktailandsons.com/collections/bitters">Bitters + N/A</a>
-    <a href="https://store.cocktailandsons.com/collections/gift-packs-and-books">Gift Sets</a>
-  </nav>
-</header>
-
-<div class="hero-wrap">
-  <div class="hero">
-    <div>
-      <p class="hero-eyebrow">Guide to Handcrafted Cocktails Vol. 4 · Max Messier</p>
-      <h1 class="hero-title">The Complete <em>Recipe</em><br>Collection</h1>
-      <div class="hero-rule"></div>
-      <p class="hero-sub">Every recipe from Max Messier's Guide to Handcrafted Cocktails Vol. 4 and beyond — all built around our small-batch syrups and mixers. Complex flavours. Simple drinks.</p>
-      <div class="hero-badges">
-        <span class="badge"><span class="badge-dot"></span>All Natural</span>
-        <span class="badge"><span class="badge-dot"></span>Bartender-Developed</span>
-        <span class="badge"><span class="badge-dot"></span>New Orleans Heritage</span>
-      </div>
-    </div>
-    <div class="hero-seal">
-      <span class="s1">est.</span>
-      <span class="s2">C&S</span>
-      <span class="s3">New Orleans</span>
-    </div>
-  </div>
-</div>
-
-<div class="app">
-  <div class="ai-section">
-    <div>
-      <p class="ai-eyebrow">AI Bartender</p>
-      <h2 class="ai-title">Ask the<br><em>Bartender</em></h2>
-      <p class="ai-desc" style="margin-top:10px;">Have a spirit or a C&S syrup on hand? Tell us what you're working with and we'll craft a bespoke recipe in the Cocktail & Sons style.</p>
-    </div>
-    <div>
-      <p class="ai-label">What do you have?</p>
-      <input class="ai-input" type="text" id="ai-prompt" placeholder="e.g. bourbon, Spiced Demerara, lemon…" />
-      <button class="btn-primary" id="ai-btn" onclick="askBartender()">
-        <span id="ai-btn-text">Create Recipe</span>
-        <span id="ai-spinner" class="spinner" style="display:none"></span>
-      </button>
-      <div class="ai-result" id="ai-result"><div id="ai-prose"></div></div>
-    </div>
-  </div>
-
+<div id="cs-recipes-app" class="app">
   <div class="controls">
     <div class="controls-row">
       <div class="search-wrap">
@@ -255,10 +146,7 @@
   <div class="grid" id="grid"></div>
 </div>
 
-<div class="footer">
-  <span>© Cocktail & Sons 2026 — Handcrafted in Colorado</span>
-  <span>Recipes by <a href="https://store.cocktailandsons.com/pages/about-us">Max Messier</a> &amp; the C&amp;S team · Vol. 4</span>
-</div>
+
 
 <div class="modal-overlay" id="modal" onclick="closeModal(event)">
   <div class="modal">
@@ -1167,36 +1055,8 @@ function closeModal(e){if(e.target===document.getElementById('modal'))closeModal
 function closeModalDirect(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModalDirect();});
 
-async function askBartender(){
-  const prompt=document.getElementById('ai-prompt').value.trim();
-  const btn=document.getElementById('ai-btn'),spinner=document.getElementById('ai-spinner'),result=document.getElementById('ai-result'),prose=document.getElementById('ai-prose');
-
-  if(!prompt){
-    prose.innerHTML='<p>Please describe what spirits or ingredients you have.</p>';
-    result.classList.add('visible'); return;
-  }
-
-  btn.disabled=true;document.getElementById('ai-btn-text').textContent='Crafting…';spinner.style.display='inline-block';result.classList.remove('visible');
-
-  try{
-    const res=await fetch('/.netlify/functions/bartender',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({ingredients:prompt})
-    });
-    const data=await res.json();
-    if(!res.ok) throw new Error(data.error||'Request failed');
-    prose.innerHTML=data.html||'<p>Could not generate a recipe. Please try again.</p>';
-    result.classList.add('visible');
-  }catch(e){
-    prose.innerHTML=`<p>Something went wrong — please try again.</p>`;
-    result.classList.add('visible');
-  }finally{
-    btn.disabled=false;document.getElementById('ai-btn-text').textContent='Create Recipe';spinner.style.display='none';
-  }
-}
-document.getElementById('ai-prompt').addEventListener('keydown',e=>{if(e.key==='Enter')askBartender();});
 renderGrid(COCKTAILS);
 </script>
+
 </body>
 </html>
